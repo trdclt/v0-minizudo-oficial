@@ -225,7 +225,7 @@ export default function Home() {
             strategy="afterInteractive"
             dangerouslySetInnerHTML={{
               __html: `
-                window.pixelId = "68c05d2b25d74a671ed27345";
+                window.pixelId = "69026068078670b1a887fecb";
                 var a = document.createElement("script");
                 a.setAttribute("async", "");
                 a.setAttribute("defer", "");
