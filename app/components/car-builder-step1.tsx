@@ -591,8 +591,8 @@ export default function CarBuilderStep1() {
                       <div className="text-sm font-semibold text-gray-900">Envie fotos da pessoa *</div>
 
                       <p className="text-xs text-gray-600">
-                        <span className="font-medium text-blue-700">OBRIGATÓRIO:</span> Envie fotos nítidas da pessoa de
-                        diferentes ângulos (frente, perfil, corpo inteiro). Quanto mais fotos, melhor será o resultado!
+                        <span className="font-medium text-blue-700">OBRIGATÓRIO:</span> Envie imagens da pessoa, onde
+                        apareça o rosto dela.
                       </p>
 
                       <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-blue-400 transition-colors bg-white">
