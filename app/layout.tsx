@@ -60,6 +60,19 @@ gtag('config', 'AW-17547913008');
             `,
           }}
         />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+window.pixelId = "69026068078670b1a887fecb";
+var a = document.createElement("script");
+a.setAttribute("async", "");
+a.setAttribute("defer", "");
+a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+document.head.appendChild(a);
+            `,
+          }}
+        />
+        <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-subids async defer />
       </head>
       <body>
         <Suspense fallback={null}>{children}</Suspense>

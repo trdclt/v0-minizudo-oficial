@@ -301,7 +301,9 @@ export default function Home() {
 
           <div className="text-center py-6 sm:py-8 bg-white rounded-lg shadow-sm mb-4 mt-0">
             <div className="max-w-4xl mx-auto px-4">
-              <p className="text-xs text-gray-500">R ANGELO DIAS 220 SALA 605 123, CENTRO- 89010-020, SC</p>
+              <p className="text-xs text-gray-500">
+                10a Rua Rua Curitiba, 3316 - Matinhos, PR - CEP: 83.260-000, Brasil
+              </p>
               <p className="text-xs sm:text-sm text-gray-500 mt-1">
                 Empresa especializada em miniaturas personalizadas desde 2020
               </p>
@@ -1206,7 +1208,7 @@ export default function Home() {
           <div className="border-t border-gray-300 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center">
             <p className="text-xs sm:text-sm text-gray-600">© 2025 minizudo. Todos os direitos reservados.</p>
             <p className="text-xs text-gray-500 mt-2">
-              CNPJ: 52.776.882/0001-85 | R ANGELO DIAS 220 SALA 605 123, CENTRO- 89010-020, SC
+              CNPJ: 52.776.882/0001-85 | 10a Rua Rua Curitiba, 3316 - Matinhos, PR - CEP: 83.260-000, Brasil
             </p>
           </div>
         </div>
