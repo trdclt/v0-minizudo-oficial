@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Montserrat } from "next/font/google"
 import { Inter } from "next/font/google"
 import { Suspense } from "react"
+import Script from "next/script"
 import "./globals.css"
 
 const montserrat = Montserrat({
@@ -40,6 +41,22 @@ html {
         `}</style>
       </head>
       <body>
+        <Script id="utmify-pixel" strategy="afterInteractive">
+          {`
+            window.pixelId = "69026068078670b1a887fecb";
+            var a = document.createElement("script");
+            a.setAttribute("async", "");
+            a.setAttribute("defer", "");
+            a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+            document.head.appendChild(a);
+          `}
+        </Script>
+        <Script
+          src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+          data-utmify-prevent-subids
+          strategy="afterInteractive"
+        />
+
         <Suspense fallback={null}>{children}</Suspense>
       </body>
     </html>
