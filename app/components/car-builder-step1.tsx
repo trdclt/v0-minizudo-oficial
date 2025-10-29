@@ -62,12 +62,6 @@ const CHECKOUT_URLS: Record<string, string> = {
   "4x30cm": "https://checkout.meumini.com/VCCL1O8SBTPN",
   "5x30cm": "https://checkout.meumini.com/VCCL1O8SBTPO",
   "6x30cm": "https://checkout.meumini.com/VCCL1O8SBTPP",
-  "1x50cm": "https://checkout.meumini.com/VCCL1O8SBTP9",
-  "2x50cm": "https://checkout.meumini.com/VCCL1O8SBTPQ",
-  "3x50cm": "https://checkout.meumini.com/VCCL1O8SBTPR",
-  "4x50cm": "https://checkout.meumini.com/VCCL1O8SBTPS",
-  "5x50cm": "https://checkout.meumini.com/VCCL1O8SBTPT",
-  "6x50cm": "https://checkout.meumini.com/VCCL1O8SBTPU",
   "1x20cm+1x30cm": "https://checkout.meumini.com/VCCL1O8SCEUD",
   "1x30cm+1x50cm": "https://checkout.meumini.com/VCCL1O8SCEUE",
   "1x20cm+1x50cm": "https://checkout.meumini.com/VCCL1O8SCEUF",
@@ -413,32 +407,6 @@ export default function CarBuilderStep1() {
         })
     } catch (error) {
       console.error("[v0] Error preparing webhook:", error instanceof Error ? error.message : String(error))
-    }
-
-    // Track with Google Ads
-    if (typeof window !== "undefined" && (window as any).gtag) {
-      ;(window as any).gtag("event", "begin_checkout", {
-        currency: "BRL",
-        value: totalCarrinho,
-        items: carrinho.map((item) => ({
-          item_id: item.id,
-          item_name: `Miniatura ${item.tamanho}`,
-          quantity: item.quantidade,
-          price: PRECOS[item.tamanho].promocional,
-        })),
-      })
-      console.log("[v0] Google Ads checkout event sent")
-    }
-
-    // Track with TikTok Pixel
-    if (typeof window !== "undefined" && (window as any).ttq) {
-      ;(window as any).ttq.track("InitiateCheckout", {
-        content_type: "product",
-        quantity: carrinho.reduce((total, item) => total + item.quantidade, 0),
-        value: totalCarrinho,
-        currency: "BRL",
-      })
-      console.log("[v0] TikTok checkout event sent")
     }
   }
 

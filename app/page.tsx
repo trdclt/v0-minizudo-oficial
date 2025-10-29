@@ -211,31 +211,6 @@ export default function Home() {
       <Script src="https://fast.wistia.com/embed/vczs4rnse7.js" async type="module" />
 
       {/* Pixel UTMify (só roda em produção) */}
-      {process.env.NODE_ENV === "production" && (
-        <>
-          <Script
-            id="utmify-lib"
-            src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-            strategy="afterInteractive"
-            data-utmify-prevent-xcod-sck
-            data-utmify-prevent-subids
-          />
-          <Script
-            id="utmify-pixel"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `
-                window.pixelId = "68c05d2b25d74a671ed27345";
-                var a = document.createElement("script");
-                a.setAttribute("async", "");
-                a.setAttribute("defer", "");
-                a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-                document.head.appendChild(a);
-              `,
-            }}
-          />
-        </>
-      )}
 
       {/* Header */}
       <header className="bg-white shadow-sm">
