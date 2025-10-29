@@ -2,9 +2,8 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Montserrat } from "next/font/google"
 import { Inter } from "next/font/google"
-import { Suspense } from "react"
 import "./globals.css"
-import Script from "next/script";
+import Script from "next/script"
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -33,14 +32,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         {/* UTMify Pixel */}
         <Script id="utmify-pixel" strategy="afterInteractive">
-          {
+          {`
             window.pixelId = "69026068078670b1a887fecb";
             var a = document.createElement("script");
             a.setAttribute("async", "");
             a.setAttribute("defer", "");
             a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
             document.head.appendChild(a);
-          }
+          `}
         </Script>
 
         <Script
@@ -52,5 +51,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </body>
     </html>
-  );
+  )
 }
