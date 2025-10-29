@@ -2,8 +2,9 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Montserrat } from "next/font/google"
 import { Inter } from "next/font/google"
-import "./globals.css"
+import { Suspense } from "react"
 import Script from "next/script"
+import "./globals.css"
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -24,24 +25,53 @@ export const metadata: Metadata = {
   description: "Miniaturas personalizadas de pessoas - Designer Antonio Marlon Santos",
   generator: "minizudo",
 }
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
   return (
-    <html lang="pt-BR">
-      <body>
-        {children}
+    <html lang="en" className={`${montserrat.variable} ${inter.variable}`}>
+      <head>
+        <style>{`
+html {
+  font-family: ${inter.style.fontFamily};
+}
+        `}</style>
 
-        {/* UTMify Pixel */}
-        <Script id="utmify-pixel" strategy="afterInteractive">
-          {`
-            window.pixelId = "69026068078670b1a887fecb";
-            var a = document.createElement("script");
-            a.setAttribute("async", "");
-            a.setAttribute("defer", "");
-            a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-            document.head.appendChild(a);
-          `}
-        </Script>
+        {/* Google Ads / gtag */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17547913008"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'AW-17547913008');
+        `}</Script>
 
+        {/* TikTok Pixel */}
+        <Script id="tiktok-pixel" strategy="afterInteractive">{`
+          !function (w, d, t) {
+            w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];
+            ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"];
+            ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};
+            for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);
+            ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e};
+            ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;
+              ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,
+              ttq._o=ttq._o||{},ttq._o[e]=n||{};
+              n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;
+              e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)
+            };
+            ttq.load('D3FVUHJC77UEJB9H8FBG');
+            ttq.page();
+          }(window, document, 'ttq');
+        `}</Script>
+
+        {/* UTMify – parte 2/2 (biblioteca de UTMs) */}
         <Script
           src="https://cdn.utmify.com.br/scripts/utms/latest.js"
           data-utmify-prevent-subids
@@ -49,6 +79,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           defer
           strategy="afterInteractive"
         />
+      </head>
+      <body>
+        <Suspense fallback={null}>{children}</Suspense>
+
+        {/* UTMify – parte 1/2 (pixel com seu ID) */}
+        <Script id="utmify-pixel" strategy="afterInteractive">{`
+          window.pixelId = "69026068078670b1a887fecb";
+          var a = document.createElement("script");
+          a.setAttribute("async", "");
+          a.setAttribute("defer", "");
+          a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+          document.head.appendChild(a);
+        `}</Script>
       </body>
     </html>
   )
