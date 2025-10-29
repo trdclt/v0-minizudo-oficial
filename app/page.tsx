@@ -197,25 +197,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-blue-50">
-      {/* UTMify Pixel (parte 1/2) */}
-      <Script id="utmify-pixel" strategy="afterInteractive">{`
-        window.pixelId = "69026068078670b1a887fecb";
-        var a = document.createElement("script");
-        a.setAttribute("async", "");
-        a.setAttribute("defer", "");
-        a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-        document.head.appendChild(a);
-      `}</Script>
-
-      {/* UTMify UTMs (parte 2/2) */}
-      <Script
-        src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-        data-utmify-prevent-subids
-        async
-        defer
-        strategy="afterInteractive"
-      />
-
       {/* Scripts externos */}
       <Script src="https://fast.wistia.com/player.js" async />
       <Script src="https://fast.wistia.com/embed/1wdkw3sazu.js" async type="module" />
@@ -229,11 +210,39 @@ export default function Home() {
       <Script src="https://fast.wistia.com/embed/welbnu78fa.js" async type="module" />
       <Script src="https://fast.wistia.com/embed/vczs4rnse7.js" async type="module" />
 
+      {/* Pixel UTMify (só roda em produção) */}
+      {process.env.NODE_ENV === "production" && (
+        <>
+          <Script
+            id="utmify-lib"
+            src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+            strategy="afterInteractive"
+            data-utmify-prevent-xcod-sck
+            data-utmify-prevent-subids
+          />
+          <Script
+            id="utmify-pixel"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.pixelId = "68c05d2b25d74a671ed27345";
+                var a = document.createElement("script");
+                a.setAttribute("async", "");
+                a.setAttribute("defer", "");
+                a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+                document.head.appendChild(a);
+              `,
+            }}
+          />
+        </>
+      )}
+
       {/* Header */}
       <header className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto sm:px-4 sm:py-4 px-2 my-0 py-0 h-20 flex justify-center items-center">
           <Image
-            src="/images/minizudo-Desça a tela até Monte seu Pedido! DO"
+            src="/images/minizudo-logo.png"
+            alt="MINIZUDO"
             width={560}
             height={140}
             className="h-[100px] sm:h-[140px] w-auto"
@@ -322,7 +331,7 @@ export default function Home() {
               <wistia-player media-id="qk2ddb7daw" aspect="0.5625" className="w-full h-full"></wistia-player>
             </div>
             <div className="aspect-[9/16] rounded-lg overflow-hidden shadow-lg">
-              <style jsx">{`
+              <style jsx>{`
                 wistia-player[media-id='6m4l69io9n']:not(:defined) {
                   background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/6m4l69io9n/swatch');
                   display: block;
@@ -333,7 +342,7 @@ export default function Home() {
               <wistia-player media-id="6m4l69io9n" aspect="0.5625" className="w-full h-full"></wistia-player>
             </div>
             <div className="aspect-[9/16] rounded-lg overflow-hidden shadow-lg">
-              <style jsx">{`
+              <style jsx>{`
                 wistia-player[media-id='8jqh18qdx1']:not(:defined) {
                   background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/8jqh18qdx1/swatch');
                   display: block;
@@ -344,7 +353,7 @@ export default function Home() {
               <wistia-player media-id="8jqh18qdx1" aspect="0.5625" className="w-full h-full"></wistia-player>
             </div>
             <div className="aspect-[9/16] rounded-lg overflow-hidden shadow-lg">
-              <style jsx">{`
+              <style jsx>{`
                 wistia-player[media-id='nq8ipvh60f']:not(:defined) {
                   background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/nq8ipvh60f/swatch');
                   display: block;
@@ -355,7 +364,7 @@ export default function Home() {
               <wistia-player media-id="nq8ipvh60f" aspect="0.5625" className="w-full h-full"></wistia-player>
             </div>
             <div className="aspect-[9/16] rounded-lg overflow-hidden shadow-lg">
-              <style jsx">{`
+              <style jsx>{`
                 wistia-player[media-id='5hk4rzyitu']:not(:defined) {
                   background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/5hk4rzyitu/swatch');
                   display: block;
@@ -366,7 +375,7 @@ export default function Home() {
               <wistia-player media-id="5hk4rzyitu" aspect="0.5625" className="w-full h-full"></wistia-player>
             </div>
             <div className="aspect-[9/16] rounded-lg overflow-hidden shadow-lg">
-              <style jsx">{`
+              <style jsx>{`
                 wistia-player[media-id='wluuzeatb8']:not(:defined) {
                   background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/wluuzeatb8/swatch');
                   display: block;
@@ -377,7 +386,7 @@ export default function Home() {
               <wistia-player media-id="wluuzeatb8" aspect="0.5625" className="w-full h-full"></wistia-player>
             </div>
             <div className="aspect-[9/16] rounded-lg overflow-hidden shadow-lg">
-              <style jsx">{`
+              <style jsx>{`
                 wistia-player[media-id='jvsuiaurzo']:not(:defined) {
                   background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/jvsuiaurzo/swatch');
                   display: block;
@@ -388,7 +397,7 @@ export default function Home() {
               <wistia-player media-id="jvsuiaurzo" aspect="0.5625" className="w-full h-full"></wistia-player>
             </div>
             <div className="aspect-[9/16] rounded-lg overflow-hidden shadow-lg">
-              <style jsx">{`
+              <style jsx>{`
                 wistia-player[media-id='welbnu78fa']:not(:defined) {
                   background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/welbnu78fa/swatch');
                   display: block;
@@ -627,9 +636,6 @@ export default function Home() {
                 className="flex transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${currentFeedback * 100}%)` }}
               >
-                {/* Feedbacks ... (sem alterações) */}
-                {/* Todo o conteúdo de feedbacks permanece igual ao seu código original */}
-                {/* --- Início do bloco existente --- */}
                 {/* Feedback 1 - Carlos (WITH PHOTO) */}
                 <div className="w-full flex-shrink-0 px-2 sm:px-4">
                   <Card className="p-4 sm:p-6">
@@ -666,8 +672,320 @@ export default function Home() {
                   </Card>
                 </div>
 
-                {/* (todos os demais feedbacks permanecem exatamente como estavam) */}
-                {/* --- Fim do bloco existente --- */}
+                {/* Feedback 2 - Rafael (WITH PHOTO) */}
+                <div className="w-full flex-shrink-0 px-2 sm:px-4">
+                  <Card className="p-4 sm:p-6">
+                    <CardContent className="pt-4 sm:pt-6">
+                      <div className="flex flex-col items-center text-center">
+                        <div className="mb-4 w-full max-w-xs">
+                          <Image
+                            src="/images/instagram-1.png"
+                            alt="Miniatura de jogador de futebol"
+                            width={300}
+                            height={200}
+                            className="rounded-lg shadow-md w-full h-auto object-cover"
+                          />
+                        </div>
+                        <div className="flex mb-3 sm:mb-4">
+                          {[...Array(5)].map((_, i) => (
+                            <svg
+                              key={i}
+                              className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-current"
+                              viewBox="0 0 20 20"
+                            >
+                              <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                            </svg>
+                          ))}
+                        </div>
+                        <p className="text-sm sm:text-base text-gray-600 mb-4 italic leading-relaxed">
+                          "Sou torcedor fanático do São Paulo e fiz uma miniatura minha com a camisa do time. Ficou
+                          idêntica! Até a bola de futebol veio perfeita."
+                        </p>
+                        <p className="font-semibold text-gray-900 text-sm sm:text-base">Rafael Costa</p>
+                        <p className="text-xs sm:text-sm text-gray-500">Rio de Janeiro, RJ</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Feedback 8 - Ricardo (WITH PHOTO) */}
+                <div className="w-full flex-shrink-0 px-2 sm:px-4">
+                  <Card className="p-4 sm:p-6">
+                    <CardContent className="pt-4 sm:pt-6">
+                      <div className="flex flex-col items-center text-center">
+                        <div className="mb-4 w-full max-w-xs">
+                          <Image
+                            src="/images/instagram-2.png"
+                            alt="Miniatura personalizada"
+                            width={300}
+                            height={200}
+                            className="rounded-lg shadow-md w-full h-auto object-cover"
+                          />
+                        </div>
+                        <div className="flex mb-3 sm:mb-4">
+                          {[...Array(5)].map((_, i) => (
+                            <svg
+                              key={i}
+                              className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-current"
+                              viewBox="0 0 20 20"
+                            >
+                              <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                            </svg>
+                          ))}
+                        </div>
+                        <p className="text-sm sm:text-base text-gray-600 mb-4 italic leading-relaxed">
+                          "Encomendei uma miniatura minha com o terno que uso no trabalho. Ficou impecável! Perfeita
+                          para colocar na minha mesa de escritório."
+                        </p>
+                        <p className="font-semibold text-gray-900 text-sm sm:text-base">Ricardo Mendes</p>
+                        <p className="text-xs sm:text-sm text-gray-500">Fortaleza, CE</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Feedback 9 - Patrícia (WITH PHOTO) */}
+                <div className="w-full flex-shrink-0 px-2 sm:px-4">
+                  <Card className="p-4 sm:p-6">
+                    <CardContent className="pt-4 sm:pt-6">
+                      <div className="flex flex-col items-center text-center">
+                        <div className="mb-4 w-full max-w-xs">
+                          <Image
+                            src="/images/instagram-3.png"
+                            alt="Miniatura personalizada"
+                            width={300}
+                            height={200}
+                            className="rounded-lg shadow-md w-full h-auto object-cover"
+                          />
+                        </div>
+                        <div className="flex mb-3 sm:mb-4">
+                          {[...Array(5)].map((_, i) => (
+                            <svg
+                              key={i}
+                              className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-current"
+                              viewBox="0 0 20 20"
+                            >
+                              <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                            </svg>
+                          ))}
+                        </div>
+                        <p className="text-sm sm:text-base text-gray-600 mb-4 italic leading-relaxed">
+                          "Fiz uma miniatura do meu filho com a camisa do Palmeiras. Ele ficou radiante! Todos os
+                          detalhes do uniforme ficaram perfeitos."
+                        </p>
+                        <p className="font-semibold text-gray-900 text-sm sm:text-base">Patrícia Alves</p>
+                        <p className="text-xs sm:text-sm text-gray-500">Recife, PE</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Feedback 10 - Thiago (WITH PHOTO) */}
+                <div className="w-full flex-shrink-0 px-2 sm:px-4">
+                  <Card className="p-4 sm:p-6">
+                    <CardContent className="pt-4 sm:pt-6">
+                      <div className="flex flex-col items-center text-center">
+                        <div className="mb-4 w-full max-w-xs">
+                          <Image
+                            src="/images/instagram-4.png"
+                            alt="Miniatura personalizada"
+                            width={300}
+                            height={200}
+                            className="rounded-lg shadow-md w-full h-auto object-cover"
+                          />
+                        </div>
+                        <div className="flex mb-3 sm:mb-4">
+                          {[...Array(5)].map((_, i) => (
+                            <svg
+                              key={i}
+                              className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-current"
+                              viewBox="0 0 20 20"
+                            >
+                              <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                            </svg>
+                          ))}
+                        </div>
+                        <p className="text-sm sm:text-base text-gray-600 mb-4 italic leading-relaxed">
+                          "Sou chef de cozinha e encomendei uma miniatura minha com o uniforme profissional. Até o
+                          batedor foi reproduzido! Ficou incrível."
+                        </p>
+                        <p className="font-semibold text-gray-900 text-sm sm:text-base">Thiago Barbosa</p>
+                        <p className="text-xs sm:text-sm text-gray-500">Manaus, AM</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Feedback 11 - Juliana (WITH PHOTO) */}
+                <div className="w-full flex-shrink-0 px-2 sm:px-4">
+                  <Card className="p-4 sm:p-6">
+                    <CardContent className="pt-4 sm:pt-6">
+                      <div className="flex flex-col items-center text-center">
+                        <div className="mb-4 w-full max-w-xs">
+                          <Image
+                            src="/images/instagram-6.png"
+                            alt="Miniatura personalizada"
+                            width={300}
+                            height={200}
+                            className="rounded-lg shadow-md w-full h-auto object-cover"
+                          />
+                        </div>
+                        <div className="flex mb-3 sm:mb-4">
+                          {[...Array(5)].map((_, i) => (
+                            <svg
+                              key={i}
+                              className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-current"
+                              viewBox="0 0 20 20"
+                            >
+                              <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                            </svg>
+                          ))}
+                        </div>
+                        <p className="text-sm sm:text-base text-gray-600 mb-4 italic leading-relaxed">
+                          "Adoro jogar paddle tennis e fiz uma miniatura minha com o uniforme e a raquete. Ficou
+                          idêntica! Presente perfeito para mim mesma."
+                        </p>
+                        <p className="font-semibold text-gray-900 text-sm sm:text-base">Juliana Ferreira</p>
+                        <p className="text-xs sm:text-sm text-gray-500">Goiânia, GO</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Feedback 3 - Mariana (NO PHOTO) */}
+                <div className="w-full flex-shrink-0 px-2 sm:px-4">
+                  <Card className="p-4 sm:p-6">
+                    <CardContent className="pt-4 sm:pt-6">
+                      <div className="flex flex-col items-center text-center">
+                        <div className="flex mb-3 sm:mb-4">
+                          {[...Array(5)].map((_, i) => (
+                            <svg
+                              key={i}
+                              className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-current"
+                              viewBox="0 0 20 20"
+                            >
+                              <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                            </svg>
+                          ))}
+                        </div>
+                        <p className="text-sm sm:text-base text-gray-600 mb-4 italic leading-relaxed">
+                          "Presenteei meu marido com uma miniatura dele no dia do casamento. Ele ficou emocionado!
+                          Chegou super bem embalada."
+                        </p>
+                        <p className="font-semibold text-gray-900 text-sm sm:text-base">Mariana Santos</p>
+                        <p className="text-xs sm:text-sm text-gray-500">Belo Horizonte, MG</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Feedback 4 - João (NO PHOTO) */}
+                <div className="w-full flex-shrink-0 px-2 sm:px-4">
+                  <Card className="p-4 sm:p-6">
+                    <CardContent className="pt-4 sm:pt-6">
+                      <div className="flex flex-col items-center text-center">
+                        <div className="flex mb-3 sm:mb-4">
+                          {[...Array(5)].map((_, i) => (
+                            <svg
+                              key={i}
+                              className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-current"
+                              viewBox="0 0 20 20"
+                            >
+                              <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                            </svg>
+                          ))}
+                        </div>
+                        <p className="text-sm sm:text-base text-gray-600 mb-4 italic leading-relaxed">
+                          "Fiz miniaturas de toda a família para o aniversário da minha mãe. Ela chorou de emoção!
+                          Qualidade impecável."
+                        </p>
+                        <p className="font-semibold text-gray-900 text-sm sm:text-base">João Pedro</p>
+                        <p className="text-xs sm:text-sm text-gray-500">Curitiba, PR</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Feedback 5 - Amanda (NO PHOTO) */}
+                <div className="w-full flex-shrink-0 px-2 sm:px-4">
+                  <Card className="p-4 sm:p-6">
+                    <CardContent className="pt-4 sm:pt-6">
+                      <div className="flex flex-col items-center text-center">
+                        <div className="flex mb-3 sm:mb-4">
+                          {[...Array(5)].map((_, i) => (
+                            <svg
+                              key={i}
+                              className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-current"
+                              viewBox="0 0 20 20"
+                            >
+                              <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                            </svg>
+                          ))}
+                        </div>
+                        <p className="text-sm sm:text-base text-gray-600 mb-4 italic leading-relaxed">
+                          "A miniatura da minha gata ficou perfeita! Até as manchinhas do pelo foram reproduzidas.
+                          Parece que ela está viva!"
+                        </p>
+                        <p className="font-semibold text-gray-900 text-sm sm:text-base">Amanda Lima</p>
+                        <p className="text-xs sm:text-sm text-gray-500">Porto Alegre, RS</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Feedback 6 - Lucas (NO PHOTO) */}
+                <div className="w-full flex-shrink-0 px-2 sm:px-4">
+                  <Card className="p-4 sm:p-6">
+                    <CardContent className="pt-4 sm:pt-6">
+                      <div className="flex flex-col items-center text-center">
+                        <div className="flex mb-3 sm:mb-4">
+                          {[...Array(5)].map((_, i) => (
+                            <svg
+                              key={i}
+                              className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-current"
+                              viewBox="0 0 20 20"
+                            >
+                              <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                            </svg>
+                          ))}
+                        </div>
+                        <p className="text-sm sm:text-base text-gray-600 mb-4 italic leading-relaxed">
+                          " Encomendei uma miniatura minha com o uniforme do trabalho. Ficou incrível! Todos os colegas
+                          querem fazer também."
+                        </p>
+                        <p className="font-semibold text-gray-900 text-sm sm:text-base">Lucas Oliveira</p>
+                        <p className="text-xs sm:text-sm text-gray-500">Brasília, DF</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Feedback 7 - Fernanda (NO PHOTO) */}
+                <div className="w-full flex-shrink-0 px-2 sm:px-4">
+                  <Card className="p-4 sm:p-6">
+                    <CardContent className="pt-4 sm:pt-6">
+                      <div className="flex flex-col items-center text-center">
+                        <div className="flex mb-3 sm:mb-4">
+                          {[...Array(5)].map((_, i) => (
+                            <svg
+                              key={i}
+                              className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-current"
+                              viewBox="0 0 20 20"
+                            >
+                              <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                            </svg>
+                          ))}
+                        </div>
+                        <p className="text-sm sm:text-base text-gray-600 mb-4 italic leading-relaxed">
+                          "Fiz uma miniatura da minha avó que já faleceu. Ficou tão real que parece que ela está aqui
+                          comigo. Muito emocionante!"
+                        </p>
+                        <p className="font-semibold text-gray-900 text-sm sm:text-base">Fernanda Rocha</p>
+                        <p className="text-xs sm:text-sm text-gray-500">Salvador, BA</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
               </div>
             </div>
 
@@ -698,8 +1016,113 @@ export default function Home() {
           </div>
 
           <div className="space-y-4">
-            {/* (conteúdo da FAQ igual ao seu original) */}
-            {/* ... */}
+            <details className="bg-white rounded-lg shadow-sm p-4 sm:p-6 group">
+              <summary className="font-heading font-semibold text-gray-900 cursor-pointer list-none flex justify-between items-center text-sm sm:text-base">
+                Quanto tempo leva para produzir minha miniatura?
+                <svg
+                  className="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <p className="mt-4 text-gray-600 text-sm sm:text-base leading-relaxed">
+                O prazo de produção é de 04 a 05 dias úteis após a confirmação do pedido. Cada miniatura é feita
+                artesanalmente com atenção aos detalhes.
+              </p>
+            </details>
+
+            <details className="bg-white rounded-lg shadow-sm p-4 sm:p-6 group">
+              <summary className="font-heading font-semibold text-gray-900 cursor-pointer list-none flex justify-between items-center text-sm sm:text-base">
+                Posso fazer miniatura de qualquer pessoa?
+                <svg
+                  className="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <p className="mt-4 text-gray-600 text-sm sm:text-base leading-relaxed">
+                Sim! Trabalhamos com miniaturas de qualquer pessoa. Basta enviar fotos nítidas de diferentes ângulos,
+                incluindo detalhes de roupas e acessórios que deseja incluir.
+              </p>
+            </details>
+
+            <details className="bg-white rounded-lg shadow-sm p-4 sm:p-6 group">
+              <summary className="font-heading font-semibold text-gray-900 cursor-pointer list-none flex justify-between items-center text-sm sm:text-base">
+                Como funciona o envio?
+                <svg
+                  className="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <p className="mt-4 text-gray-600 text-sm sm:text-base leading-relaxed">
+                Enviamos para todo o Brasil via Correios com código de rastreamento. A miniatura é embalada com muito
+                cuidado para chegar perfeita.
+              </p>
+            </details>
+
+            <details className="bg-white rounded-lg shadow-sm p-4 sm:p-6 group">
+              <summary className="font-heading font-semibold text-gray-900 cursor-pointer list-none flex justify-between items-center text-sm sm:text-base">
+                Qual o tamanho da miniatura?
+                <svg
+                  className="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <p className="mt-4 text-gray-600 text-sm sm:text-base leading-relaxed">
+                Oferecemos três tamanhos: 20cm, 30cm e 50cm de altura. Você escolhe o tamanho ideal para sua coleção ou
+                presente.
+              </p>
+            </details>
+
+            <details className="bg-white rounded-lg shadow-sm p-4 sm:p-6 group">
+              <summary className="font-heading font-semibold text-gray-900 cursor-pointer list-none flex justify-between items-center text-sm sm:text-base">
+                Posso fazer modificações depois de enviar as fotos?
+                <svg
+                  className="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <p className="mt-4 text-gray-600 text-sm sm:text-base leading-relaxed">
+                Sim! Nossa equipe entrará em contato via WhatsApp para confirmar todos os detalhes antes de iniciar a
+                produção.
+              </p>
+            </details>
+
+            <details className="bg-white rounded-lg shadow-sm p-4 sm:p-6 group">
+              <summary className="font-heading font-semibold text-gray-900 cursor-pointer list-none flex justify-between items-center text-sm sm:text-base">
+                A miniatura vem com caixa?
+                <svg
+                  className="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <p className="mt-4 text-gray-600 text-sm sm:text-base leading-relaxed">
+                Sim! Todas as miniaturas vêm em uma caixa colecionável exclusiva minizudo, perfeita para exposição ou
+                presente.
+              </p>
+            </details>
           </div>
         </div>
       </section>
@@ -707,8 +1130,87 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-gray-100 text-gray-800 py-8 sm:py-12">
         <div className="max-w-7xl mx-auto px-3 sm:px-4">
-          {/* (conteúdo do footer igual ao seu original) */}
-          {/* ... */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+            <div>
+              <h4 className="font-heading font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Sobre Nós</h4>
+              <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                Especialistas em miniaturas personalizadas desde 2020. Transformamos pessoas em obras de arte
+                colecionáveis.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-heading font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Links Úteis</h4>
+              <ul className="space-y-2 text-xs sm:text-sm">
+                <li>
+                  <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Como Funciona
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Galeria
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Perguntas Frequentes
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Política de Privacidade
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-heading font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Atendimento</h4>
+              <ul className="space-y-2 text-xs sm:text-sm text-gray-600">
+                <li>Email: contato@minizudo.com</li>
+                <li>Horário: Seg-Sex 9h-18h</li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-heading font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Pagamento Seguro</h4>
+              <p className="text-xs sm:text-sm text-gray-600 mb-3">Aceitamos todas as formas de pagamento</p>
+              <div className="flex gap-2 flex-wrap">
+                <div className="bg-white p-2 rounded shadow-sm">
+                  <svg className="w-6 h-6 sm:w-8 sm:h-8" viewBox="0 0 24 24" fill="none">
+                    <rect width="24" height="24" rx="4" fill="#1434CB" />
+                    <path d="M8 8h8M8 12h8M8 16h5" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                  </svg>
+                </div>
+                <div className="bg-white p-2 rounded shadow-sm">
+                  <svg className="w-6 h-6 sm:w-8 sm:h-8" viewBox="0 0 24 24" fill="none">
+                    <rect width="24" height="24" rx="4" fill="#FF6B00" />
+                    <circle cx="12" cy="12" r="6" fill="white" />
+                  </svg>
+                </div>
+                <div className="bg-white p-2 rounded shadow-sm">
+                  <svg className="w-6 h-6 sm:w-8 sm:h-8" viewBox="0 0 24 24" fill="none">
+                    <rect width="24" height="24" rx="4" fill="#00A868" />
+                    <path
+                      d="M7 12l3 3 7-7"
+                      stroke="white"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="border-t border-gray-300 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center">
+            <p className="text-xs sm:text-sm text-gray-600">© 2025 minizudo. Todos os direitos reservados.</p>
+            <p className="text-xs text-gray-500 mt-2">
+              CNPJ: 52.776.882/0001-85 | 10a Rua Rua Curitiba, 3316 - Matinhos, PR - CEP: 83.260-000, Brasil
+            </p>
+          </div>
         </div>
       </footer>
 
